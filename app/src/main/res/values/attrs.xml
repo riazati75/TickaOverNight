@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ValueChanger">
+        <attr name="vcDefaultValue" format="integer"/>
+        <attr name="vcMinValue" format="integer"/>
+        <attr name="vcMaxValue" format="integer"/>
+        <attr name="vcMinCountError" format="string"/>
+        <attr name="vcMaxCountError" format="string"/>
+    </declare-styleable>
+
+</resources>
