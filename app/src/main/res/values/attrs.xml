@@ -7,6 +7,7 @@
         <attr name="vcMaxValue" format="integer"/>
         <attr name="vcMinCountError" format="string"/>
         <attr name="vcMaxCountError" format="string"/>
+        <attr name="vcAccompanyingText" format="string"/>
     </declare-styleable>
 
 </resources>

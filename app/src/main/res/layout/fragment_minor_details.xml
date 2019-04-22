@@ -184,9 +184,9 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="3"
-                        app:vcMinValue="0"
+                        app:vcDefaultValue="0"
                         app:vcMaxValue="10"
-                        app:vcDefaultValue="0" />
+                        app:vcMinValue="0" />
 
                     <TextView
                         android:layout_width="0dp"
