@@ -15,7 +15,7 @@ import com.ticka.application.widgets.ValueChanger;
 public class CapacityFragment extends Fragment {
 
     private Context context;
-    private TextView ca1 , ca2 , ca3 , ca4;
+    private TextView ca1 , ca2 , ca3 , ca4 , description;
     private ValueChanger c1 , c2 , c3 , c4;
 
     public CapacityFragment() {
@@ -40,11 +40,13 @@ public class CapacityFragment extends Fragment {
         ca2 = view.findViewById(R.id.ca2);
         ca3 = view.findViewById(R.id.ca3);
         ca4 = view.findViewById(R.id.ca4);
+        description = view.findViewById(R.id.description);
 
         ca1.setText(R.string.capacity_1);
         ca2.setText(R.string.capacity_2);
         ca3.setText(R.string.capacity_3);
         ca4.setText(R.string.capacity_4);
+        description.setText(R.string.general_description);
 
     }
 

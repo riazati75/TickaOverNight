@@ -24,6 +24,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:fontFamily="@font/yekan_mobile_medium"
                 android:gravity="center"
                 android:padding="2dp"
                 android:text="ظرفیت"
@@ -101,8 +102,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
+                android:layout_marginEnd="16dp" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp" />
+                android:padding="5dp"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/inputDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/selector_edt"
+                android:maxLines="2"
+                android:minLines="1"
+                android:padding="10dp"
+                android:textColor="@color/colorBlack"
+                tools:ignore="Autofill,LabelFor" />
 
         </LinearLayout>
 
