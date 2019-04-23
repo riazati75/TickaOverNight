@@ -12,7 +12,9 @@
         android:supportsRtl="false"
         android:theme="@style/ThemeBase"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity"
+        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
