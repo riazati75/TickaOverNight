@@ -12,7 +12,7 @@ public class LoginActivity extends SetupActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
-    
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
