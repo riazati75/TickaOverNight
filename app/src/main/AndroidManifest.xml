@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ticka.application">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".core.CentralCore"
         android:allowBackup="true"
@@ -12,17 +16,19 @@
         android:supportsRtl="false"
         android:theme="@style/ThemeBase"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".LoginActivity"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
+            android:theme="@style/ThemeLogin"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+
     </application>
 
 </manifest>

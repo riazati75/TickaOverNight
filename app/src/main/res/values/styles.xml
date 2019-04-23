@@ -11,6 +11,16 @@
         <item name="android:popupMenuStyle">@style/PopupMenu</item>
     </style>
 
+    <style name="ThemeLogin" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:popupBackground">@drawable/shape_popup</item>
+        <item name="android:fontFamily">@font/yekan_mobile_regular</item>
+    </style>
+
     <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
         <item name="android:popupBackground">@drawable/shape_popup</item>
         <item name="android:popupElevation" tools:ignore="NewApi">4dp</item>
@@ -26,16 +36,6 @@
         <item name="cardCornerRadius">4dp</item>
         <item name="cardElevation">3dp</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="ThemeLogin" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorError">@color/colorError</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
-        <item name="android:popupBackground">@drawable/shape_popup</item>
-        <item name="android:fontFamily">@font/yekan_mobile_regular</item>
     </style>
 
     <style name="TextStyle" parent="ThemeBase">
