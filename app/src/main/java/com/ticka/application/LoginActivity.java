@@ -2,8 +2,10 @@ package com.ticka.application;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -12,30 +14,48 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import ir.aid.library.Frameworks.setup.SetupActivity;
+
+import static com.ticka.application.services.SMSService.SMS_ACTION;
 
 public class LoginActivity extends SetupActivity {
 
     private static final int LENGTH_ANIMATION = 800;
 
     private Button btnPhone  , btnCode;
+    private EditText inPhone, inCode;
     private LinearLayout inputPhone , inputCode;
     private RelativeLayout layoutInput;
+    private BroadcastReceiver sms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
+        smsInitial();
+    }
+
+    private void initViews(){
+
+        setNotificationBar();
 
         btnPhone = findViewById(R.id.btnPhone);
         btnCode  = findViewById(R.id.btnCode);
-        inputPhone = findViewById(R.id.inputPhone);
-        inputCode  = findViewById(R.id.inputCode);
+        inPhone  = findViewById(R.id.inPhone);
+        inCode   = findViewById(R.id.inCode);
+        inputPhone   = findViewById(R.id.inputPhone);
+        inputCode    = findViewById(R.id.inputCode);
         layoutInput  = findViewById(R.id.layoutInput);
+
+        initActivity();
+    }
+
+    private void initActivity(){
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -62,7 +82,6 @@ public class LoginActivity extends SetupActivity {
                 finish();
             }
         });
-
     }
 
     private void firstAnimation(){
@@ -120,13 +139,30 @@ public class LoginActivity extends SetupActivity {
         animation.start();
     }
 
-    private void initViews(){
-        setNotificationBar();
-        initBackground();
+    private void smsInitial(){
+
+        sms = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                if(SMS_ACTION.equals(intent.getAction())){
+                    String code = intent.getStringExtra("code");
+                    inCode.setText(code);
+                }
+            }
+        };
     }
 
-    private void initBackground(){
+    @Override
+    protected void onResume() {
+        registerReceiver(sms , new IntentFilter(SMS_ACTION));
+        super.onResume();
+    }
 
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(sms);
+        super.onDestroy();
     }
 
     @Override
