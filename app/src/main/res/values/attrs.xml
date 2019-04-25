@@ -10,4 +10,16 @@
         <attr name="vcAccompanyingText" format="string"/>
     </declare-styleable>
 
+    <declare-styleable name="ParticlesView">
+        <attr name="density" format="integer" />
+        <attr name="frameDelayMillis" format="integer" />
+        <attr name="lineColor" format="color" />
+        <attr name="lineLength" format="dimension" />
+        <attr name="lineThickness" format="dimension" />
+        <attr name="particleColor" format="color" />
+        <attr name="particleRadiusMax" format="dimension" />
+        <attr name="particleRadiusMin" format="dimension" />
+        <attr name="speedFactor" format="float" />
+    </declare-styleable>
+
 </resources>

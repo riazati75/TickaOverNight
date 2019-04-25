@@ -4,49 +4,130 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/ticka"
     android:gravity="center_horizontal"
     tools:context=".LoginActivity">
 
-    <TextView
+    <com.ticka.application.widgets.particles.ParticlesView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="Ticka"
-        android:textColor="@color/colorButton"
-        android:textSize="80sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:layout_height="match_parent"
+        app:density="80"
+        app:frameDelayMillis="10"
+        app:lineColor="@color/gray200"
+        app:lineLength="150dp"
+        app:lineThickness="1dp"
+        app:particleColor="@color/colorWhite"
+        app:particleRadiusMax="3dp"
+        app:particleRadiusMin="1dp"
+        app:speedFactor="0.5" />
 
-    <EditText
-        android:id="@+id/inPhone"
+    <RelativeLayout
+        android:id="@+id/layoutInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/selector_edt"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="8dp"
         android:gravity="center"
-        android:hint="شماره تلفن خود را وارد کنید"
-        android:padding="10dp"
-        android:textColor="@color/colorBlack"
-        android:textColorHint="@color/colorButton"
-        android:textSize="20sp" />
+        android:visibility="invisible">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/inPhone"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/selector_main_btn"
-        android:text="بررسی شماره تلفن"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/inputPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_login_input"
+            android:gravity="center"
+            android:minHeight="300dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/pic_profile"
+                app:civ_border_color="@color/colorButton"
+                app:civ_border_width="3dp" />
+
+            <EditText
+                android:id="@+id/inPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/selector_edt"
+                android:gravity="center"
+                android:hint="شماره تلفن خود را وارد کنید"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:padding="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/gray800"
+                android:textSize="20sp"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/btnPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/selector_main_btn"
+                android:text="بررسی شماره تلفن"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/inputCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_login_input"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/inCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/selector_edt"
+                android:gravity="center"
+                android:hint="کد دریافتی را وارد کنید"
+                android:inputType="phone"
+                android:maxLength="6"
+                android:padding="10dp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/gray800"
+                android:textSize="20sp"
+                tools:ignore="Autofill" />
+
+            <Button
+                android:id="@+id/btnCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="64dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/selector_main_btn"
+                android:text="بررسی کد دریافتی"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
