@@ -111,7 +111,6 @@ public class LoginActivity extends SetupActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                //baseLayout.setVisibility(View.INVISIBLE);
             }
         });
         anim.setInterpolator(new LinearInterpolator());
@@ -232,5 +231,10 @@ public class LoginActivity extends SetupActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(newBase);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
