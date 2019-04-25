@@ -1,13 +1,19 @@
 package com.ticka.application;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
@@ -26,6 +32,7 @@ import static com.ticka.application.services.SMSService.SMS_ACTION;
 public class LoginActivity extends SetupActivity {
 
     private static final int LENGTH_ANIMATION = 800;
+    private static final int REQUEST_CODE = 21;
 
     private Button btnPhone  , btnCode;
     private EditText inPhone, inCode;
@@ -68,17 +75,7 @@ public class LoginActivity extends SetupActivity {
         btnPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                closePhoneLayout();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(SMS_ACTION);
-                        intent.putExtra("code" , "564731");
-                        sendBroadcast(intent);
-                    }
-                } , 2500);
+                checkPermission();
             }
         });
 
@@ -163,6 +160,58 @@ public class LoginActivity extends SetupActivity {
                 }
             }
         };
+    }
+
+    private void checkPermission(){
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+
+            if(ContextCompat.checkSelfPermission(this , Manifest.permission.RECEIVE_SMS)
+                    != PackageManager.PERMISSION_GRANTED){
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{
+                                Manifest.permission.RECEIVE_SMS
+                        }, REQUEST_CODE
+                );
+            }
+            else {
+                closePhoneLayout();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(SMS_ACTION);
+                        intent.putExtra("code" , "564731");
+                        sendBroadcast(intent);
+                    }
+                } , 2500);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if(requestCode == REQUEST_CODE){
+
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                closePhoneLayout();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(SMS_ACTION);
+                        intent.putExtra("code" , "564731");
+                        sendBroadcast(intent);
+                    }
+                } , 2500);
+            }
+            else {
+                checkPermission();
+            }
+        }
     }
 
     @Override
