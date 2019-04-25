@@ -3,6 +3,9 @@ package com.ticka.application.services;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import ir.aid.library.Frameworks.receiver.SMSScanner;
 
 public class SMSService extends SMSScanner {
@@ -24,6 +27,12 @@ public class SMSService extends SMSScanner {
     }
 
     private String getCode(String message){
-        return message.substring(12 , 17);
+        String code = "";
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(message);
+        while(m.find()) {
+            code = code + m.group();
+        }
+        return code;
     }
 }
