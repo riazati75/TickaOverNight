@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import ir.aid.library.Frameworks.setup.SetupActivity;
 
@@ -67,7 +68,17 @@ public class LoginActivity extends SetupActivity {
         btnPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 closePhoneLayout();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(SMS_ACTION);
+                        intent.putExtra("code" , "564731");
+                        sendBroadcast(intent);
+                    }
+                } , 2500);
             }
         });
 
@@ -79,6 +90,7 @@ public class LoginActivity extends SetupActivity {
                                 LoginActivity.this , MainActivity.class
                         )
                 );
+                Toast.makeText(LoginActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
