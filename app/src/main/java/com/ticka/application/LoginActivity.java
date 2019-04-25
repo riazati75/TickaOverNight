@@ -25,9 +25,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import ir.aid.library.Frameworks.setup.SetupActivity;
 
 import static com.ticka.application.services.SMSService.SMS_ACTION;
