@@ -26,22 +26,10 @@
                 android:background="@color/gray200"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="12dp"
-                    android:padding="4dp"
-                    android:text="نوع:"
-                    android:textColor="@color/gray900"
-                    android:textSize="22sp" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
+                    android:layout_marginTop="16dp"
                     android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:weightSum="2">
@@ -111,23 +99,11 @@
                 android:background="@color/gray200"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginEnd="14dp"
-                    android:padding="2dp"
-                    android:text="تیپ:"
-                    android:textColor="@color/gray900"
-                    android:textSize="22sp" />
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="3dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="3dp"
                     android:background="@drawable/shape_edt_normal">
@@ -252,7 +228,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:padding="5dp"
                     android:textSize="18sp" />
@@ -265,8 +240,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_marginEnd="16dp"
                     app:vcAccompanyingText=" شبانه روز"
-                    app:vcDefaultValue="1"
-                    app:vcMinValue="1" />
+                    app:vcMinValue="1"/>
 
                 <TextView
                     android:id="@+id/ca2"
@@ -287,7 +261,6 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     app:vcAccompanyingText=" شبانه روز"
-                    app:vcDefaultValue="1"
                     app:vcMinValue="1"/>
 
             </LinearLayout>

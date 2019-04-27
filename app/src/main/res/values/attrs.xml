@@ -2,12 +2,15 @@
 <resources>
 
     <declare-styleable name="ValueChanger">
-        <attr name="vcDefaultValue" format="integer"/>
-        <attr name="vcMinValue" format="integer"/>
-        <attr name="vcMaxValue" format="integer"/>
-        <attr name="vcMinCountError" format="string"/>
-        <attr name="vcMaxCountError" format="string"/>
-        <attr name="vcAccompanyingText" format="string"/>
+        <attr name="vcDefaultValue" format="integer" />
+        <attr name="vcMinValue" format="integer" />
+        <attr name="vcMaxValue" format="integer" />
+        <attr name="vcMinCountError" format="string" />
+        <attr name="vcMaxCountError" format="string" />
+        <attr name="vcAccompanyingText" format="string" />
+        <attr name="vcPlusIcon" format="reference"/>
+        <attr name="vcMinesIcon" format="reference"/>
+        <attr name="vcBackgroundShape" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="ParticlesView">

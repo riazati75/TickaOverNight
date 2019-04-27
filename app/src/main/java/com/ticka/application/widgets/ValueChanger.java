@@ -3,11 +3,14 @@ package com.ticka.application.widgets;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +34,9 @@ public class ValueChanger extends RelativeLayout {
     private int countValue;
     private int minValue;
     private int maxValue;
+    private Drawable backgroundShape = null;
+    private Drawable iconPlus = null;
+    private Drawable iconMines = null;
 
     public ValueChanger(Context context) {
         super(context);
@@ -62,12 +68,17 @@ public class ValueChanger extends RelativeLayout {
 
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs , R.styleable.ValueChanger, defStyleAttr,0);
 
-        this.defaultValue     = typedArray.getInt(R.styleable.ValueChanger_vcDefaultValue , 0);
-        this.minValue         = typedArray.getInt(R.styleable.ValueChanger_vcMinValue , 0);
-        this.maxValue         = typedArray.getInt(R.styleable.ValueChanger_vcMaxValue , 100);
-        this.minCountError    = typedArray.getString(R.styleable.ValueChanger_vcMinCountError);
-        this.maxCountError    = typedArray.getString(R.styleable.ValueChanger_vcMaxCountError);
-        this.accompanyingText = typedArray.getString(R.styleable.ValueChanger_vcAccompanyingText);
+        this.defaultValue      = typedArray.getInt(R.styleable.ValueChanger_vcDefaultValue , 0);
+        this.minValue          = typedArray.getInt(R.styleable.ValueChanger_vcMinValue , 0);
+        this.maxValue          = typedArray.getInt(R.styleable.ValueChanger_vcMaxValue , 100);
+        this.minCountError     = typedArray.getString(R.styleable.ValueChanger_vcMinCountError);
+        this.maxCountError     = typedArray.getString(R.styleable.ValueChanger_vcMaxCountError);
+        this.accompanyingText  = typedArray.getString(R.styleable.ValueChanger_vcAccompanyingText);
+        this.backgroundShape   = typedArray.getDrawable(R.styleable.ValueChanger_vcBackgroundShape);
+        this.iconPlus          = typedArray.getDrawable(R.styleable.ValueChanger_vcPlusIcon);
+        this.iconMines         = typedArray.getDrawable(R.styleable.ValueChanger_vcMinesIcon);
+
+        typedArray.recycle();
 
         if(this.accompanyingText == null){
             this.accompanyingText = "";
@@ -99,6 +110,7 @@ public class ValueChanger extends RelativeLayout {
         this.autoDecrease = new AutoDecrease();
 
         RelativeLayout root = view.findViewById(R.id.root);
+        LinearLayout background = view.findViewById(R.id.background);
         this.count = view.findViewById(R.id.count);
         this.plus  = view.findViewById(R.id.plus);
         this.mines = view.findViewById(R.id.mines);
@@ -109,6 +121,16 @@ public class ValueChanger extends RelativeLayout {
         if(width > 0 && height > 0){
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width , height);
             root.setLayoutParams(params);
+        }
+
+        if(iconPlus != null){
+            this.plus.setImageDrawable(iconPlus);
+        }
+        if(iconMines != null){
+            this.mines.setImageDrawable(iconMines);
+        }
+        if(backgroundShape != null){
+            background.setBackground(backgroundShape);
         }
 
         this.count.setText(getCount(defaultValue));
@@ -173,6 +195,36 @@ public class ValueChanger extends RelativeLayout {
 
     }
 
+    public void setBackgroundShape(@DrawableRes int backgroundShape) {
+        this.backgroundShape = getResources().getDrawable(backgroundShape);
+        invalidate();
+    }
+
+    public void setBackgroundShape(Drawable backgroundShape) {
+        this.backgroundShape = backgroundShape;
+        invalidate();
+    }
+
+    public void setIconPlus(@DrawableRes int iconPlus) {
+        this.iconPlus = getResources().getDrawable(iconPlus);
+        invalidate();
+    }
+
+    public void setIconPlus(Drawable iconPlus) {
+        this.iconPlus = iconPlus;
+        invalidate();
+    }
+
+    public void setIconMines(@DrawableRes int iconMines) {
+        this.iconMines = getResources().getDrawable(iconMines);
+        invalidate();
+    }
+
+    public void setIconMines(Drawable iconMines) {
+        this.iconMines = iconMines;
+        invalidate();
+    }
+
     public void setDefaultValue(int defaultValue) {
         this.defaultValue = defaultValue;
     }
@@ -181,11 +233,11 @@ public class ValueChanger extends RelativeLayout {
         return defaultValue;
     }
 
-    public void setCountValue(int countValue) {
+    public void setValue(int countValue) {
         this.countValue = countValue;
     }
 
-    public int getCountValue() {
+    public int getValue() {
         return countValue;
     }
 
