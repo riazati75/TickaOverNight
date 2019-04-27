@@ -65,10 +65,10 @@ public class MainActivity extends SetupActivity {
         setupNotificationBar();
 
         drawer_layout = findViewById(R.id.drawer_layout);
-        menu = findViewById(R.id.menu);
-        title = findViewById(R.id.title);
-        popup = findViewById(R.id.popup);
-        sideMenu = findViewById(R.id.sideMenu);
+        menu          = findViewById(R.id.menu);
+        title         = findViewById(R.id.title);
+        popup         = findViewById(R.id.popup);
+        sideMenu      = findViewById(R.id.sideMenu);
 
         initSideMenu();
     }
