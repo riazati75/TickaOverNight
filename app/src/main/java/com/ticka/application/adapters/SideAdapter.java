@@ -47,7 +47,7 @@ public class SideAdapter extends RecyclerView.Adapter<SideAdapter.VH> {
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new VH(layoutInflater.inflate(R.layout.layout_side_menu , viewGroup , false));
+        return new VH(layoutInflater.inflate(R.layout.layout_rec_side_menu, viewGroup , false));
     }
 
     @Override
