@@ -47,14 +47,21 @@ public class MainActivity extends SetupActivity {
     private DrawerLayout drawer_layout;
     private ImageView menu , popup;
     private TextView title;
+    private int activityState;
     private boolean isExit = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initActivity();
         setContentView(R.layout.activity_main);
         initViews();
         init();
+    }
+
+    private void initActivity(){
+        Intent intent = getIntent();
+        activityState = intent.getIntExtra("state" , 0);
     }
 
     private void initViews(){
@@ -69,6 +76,12 @@ public class MainActivity extends SetupActivity {
         title         = findViewById(R.id.title);
         popup         = findViewById(R.id.popup);
         sideMenu      = findViewById(R.id.sideMenu);
+
+        if(activityState == 0){
+            menu.setVisibility(View.GONE);
+            drawer_layout.setEnabled(false
+            );
+        }
 
         initSideMenu();
     }
@@ -170,6 +183,7 @@ public class MainActivity extends SetupActivity {
                 sideAdapter.setLastPosition(pos);
 
                 setFragment(SideList.getFragments().get(pos));
+                title.setText(SideList.getFragmentsTitle().get(pos));
             }
         };
 
