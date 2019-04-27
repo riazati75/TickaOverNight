@@ -23,7 +23,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import ir.aid.library.Frameworks.setup.SetupActivity;
 
@@ -117,7 +116,7 @@ public class LoginActivity extends SetupActivity {
 
     private void closePhoneLayout() {
 
-        Animation animation = AnimationUtils.loadAnimation(this , R.anim.input_zoom_out);
+        Animation animation = AnimationUtils.loadAnimation(this , R.anim.animation_input_zoom_out);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -140,7 +139,7 @@ public class LoginActivity extends SetupActivity {
     }
 
     private void openCodeLayout() {
-        Animation animation = AnimationUtils.loadAnimation(this , R.anim.input_zoom_in);
+        Animation animation = AnimationUtils.loadAnimation(this , R.anim.animation_input_zoom_in);
         inputCode.startAnimation(animation);
         inputCode.setVisibility(View.VISIBLE);
         animation.start();

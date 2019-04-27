@@ -3,6 +3,7 @@ package com.ticka.application;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -10,11 +11,20 @@ import ir.aid.library.Frameworks.setup.SetupActivity;
 
 public class HomeListActivity extends SetupActivity {
 
+    private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_list);
         setupNotificationBar();
+        initViews();
+    }
+
+    private void initViews() {
+
+        fab = findViewById(R.id.fab);
+
     }
 
     public void setupNotificationBar() {
@@ -25,7 +35,6 @@ public class HomeListActivity extends SetupActivity {
             w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS ,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
     }
 
     @Override
