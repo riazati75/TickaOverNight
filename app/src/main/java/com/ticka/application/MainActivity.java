@@ -18,6 +18,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ticka.application.adapters.SideAdapter;
@@ -45,6 +46,7 @@ public class MainActivity extends SetupActivity {
     private PopupMenu popupMenu;
     private DrawerLayout drawer_layout;
     private ImageView menu , popup;
+    private TextView title;
     private boolean isExit = true;
 
     @Override
@@ -64,6 +66,7 @@ public class MainActivity extends SetupActivity {
 
         drawer_layout = findViewById(R.id.drawer_layout);
         menu = findViewById(R.id.menu);
+        title = findViewById(R.id.title);
         popup = findViewById(R.id.popup);
         sideMenu = findViewById(R.id.sideMenu);
 
@@ -90,6 +93,7 @@ public class MainActivity extends SetupActivity {
         });
 
         setFragment(SideList.getFragments().get(0));
+        title.setText(SideList.getFragmentsTitle().get(0));
     }
 
     private void setFragment(Fragment fragment){
@@ -134,6 +138,7 @@ public class MainActivity extends SetupActivity {
                     public void onClick(View view, int position) {
 
                         setFragment(SideList.getFragments().get(position));
+                        title.setText(SideList.getFragmentsTitle().get(position));
                         sideAdapter.setLastPosition(position);
 
                         if(drawer_layout.isDrawerOpen(Gravity.END)){

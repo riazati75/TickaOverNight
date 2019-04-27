@@ -9,7 +9,6 @@ import com.ticka.application.fragments.MinorDetailsFragment;
 import com.ticka.application.fragments.PossibilitiesFragment;
 import com.ticka.application.fragments.PriceFragment;
 import com.ticka.application.fragments.RulesFragment;
-import com.ticka.application.fragments.SettingsFragment;
 import com.ticka.application.fragments.UploadPhotoFragment;
 import com.ticka.application.fragments.UserRulesFragment;
 
@@ -32,7 +31,7 @@ public class SideList implements Serializable {
 
     public static String[] TITLES = {
             "قوانین همکاری",
-            "اطلاعات کلی",
+            "اطلاعات عمومی",
             "بارگیری تصاویر",
             "اطلاعات جزعی",
             "ظرفیت",
@@ -53,6 +52,22 @@ public class SideList implements Serializable {
         fragments.add(new PossibilitiesFragment());
         fragments.add(new UserRulesFragment());
         fragments.add(new PriceFragment());
+
+        return fragments;
+    }
+
+    public static List<String> getFragmentsTitle(){
+
+        List<String> fragments = new ArrayList<>();
+
+        fragments.add("قوانین همکاری");
+        fragments.add("اطلاعات عمومی");
+        fragments.add("بارگیری تصاویر");
+        fragments.add("اطلاعات جزعی");
+        fragments.add("ظرفیت");
+        fragments.add("امکانات");
+        fragments.add("قوانین و مقررات");
+        fragments.add("قیمت گذاری");
 
         return fragments;
     }
