@@ -79,8 +79,7 @@ public class MainActivity extends SetupActivity {
 
         if(activityState == -1){
             menu.setVisibility(View.GONE);
-            drawer_layout.setEnabled(false
-            );
+            drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
 
         initSideMenu();

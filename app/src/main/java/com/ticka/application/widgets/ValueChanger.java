@@ -98,9 +98,18 @@ public class ValueChanger extends RelativeLayout {
         this.autoPlussing = new AutoPlussing();
         this.autoDecrease = new AutoDecrease();
 
+        RelativeLayout root = view.findViewById(R.id.root);
         this.count = view.findViewById(R.id.count);
         this.plus  = view.findViewById(R.id.plus);
         this.mines = view.findViewById(R.id.mines);
+
+        int width  = this.getWidth();
+        int height = this.getHeight();
+
+        if(width > 0 && height > 0){
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width , height);
+            root.setLayoutParams(params);
+        }
 
         this.count.setText(getCount(defaultValue));
 
