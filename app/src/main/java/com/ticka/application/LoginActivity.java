@@ -84,10 +84,9 @@ public class LoginActivity extends SetupActivity {
             public void onClick(View v) {
                 startActivity(
                         new Intent(
-                                LoginActivity.this , MainActivity.class
+                                LoginActivity.this , HomeListActivity.class
                         )
                 );
-                Toast.makeText(LoginActivity.this, "خوش آمدید", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

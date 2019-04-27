@@ -77,7 +77,7 @@ public class MainActivity extends SetupActivity {
         popup         = findViewById(R.id.popup);
         sideMenu      = findViewById(R.id.sideMenu);
 
-        if(activityState == 0){
+        if(activityState == -1){
             menu.setVisibility(View.GONE);
             drawer_layout.setEnabled(false
             );

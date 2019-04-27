@@ -17,31 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
-            <ImageView
-                android:id="@+id/menu"
-                style="@style/ClickableCircleBlack"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:src="@drawable/icon_menu"
-                tools:ignore="ContentDescription,RtlSymmetry" />
-
             <RelativeLayout
                 android:layout_toEndOf="@+id/popup"
-                android:layout_toStartOf="@+id/menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/title"
                     android:textColor="@color/colorBlack"
-                    android:textSize="25sp"
-                    android:layout_marginEnd="5dp"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="11dp"
+                    android:text="لیست اقامتگاه های ثبت شده"
                     android:layout_centerVertical="true"
                     android:padding="5dp"
                     android:layout_alignParentEnd="true"
