@@ -65,7 +65,6 @@ public class ValueChanger extends RelativeLayout {
         this.defaultValue     = typedArray.getInt(R.styleable.ValueChanger_vcDefaultValue , 0);
         this.minValue         = typedArray.getInt(R.styleable.ValueChanger_vcMinValue , 0);
         this.maxValue         = typedArray.getInt(R.styleable.ValueChanger_vcMaxValue , 100);
-        this.maxValue         = typedArray.getInt(R.styleable.ValueChanger_vcMaxValue , 100);
         this.minCountError    = typedArray.getString(R.styleable.ValueChanger_vcMinCountError);
         this.maxCountError    = typedArray.getString(R.styleable.ValueChanger_vcMaxCountError);
         this.accompanyingText = typedArray.getString(R.styleable.ValueChanger_vcAccompanyingText);
@@ -81,6 +80,16 @@ public class ValueChanger extends RelativeLayout {
         if(this.maxCountError == null){
             this.maxCountError = "مقدار وارد شده نمیتواند از " + this.maxValue + accompanyingText + " بیشتر باشد";
         }
+
+        if(defaultValue < minValue){
+            defaultValue = minValue;
+        }
+
+        if(defaultValue > maxValue){
+            defaultValue = maxValue;
+        }
+
+        countValue = defaultValue;
     }
 
     private void initViews(View view){
@@ -93,7 +102,7 @@ public class ValueChanger extends RelativeLayout {
         this.plus  = view.findViewById(R.id.plus);
         this.mines = view.findViewById(R.id.mines);
 
-        this.count.setText(getCount(countValue));
+        this.count.setText(getCount(defaultValue));
 
         initPlusButton();
         initMinesButton();

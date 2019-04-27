@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.ticka.application.R;
 import com.ticka.application.helpers.SpinnerHelper;
@@ -24,6 +25,7 @@ public class MinorDetailsFragment extends Fragment {
 
     private EditText buildingArea , landArea;
     private Spinner spLeft , spRight , spTip;
+    private TextView ca1 , ca2;
 
     private String[] type = {
             "نوع ساختمان",
@@ -74,10 +76,15 @@ public class MinorDetailsFragment extends Fragment {
         spLeft       = view.findViewById(R.id.spLeft);
         spRight      = view.findViewById(R.id.spRight);
         spTip        = view.findViewById(R.id.spTip);
+        ca1          = view.findViewById(R.id.ca1);
+        ca2          = view.findViewById(R.id.ca2);
 
         spLeft.setAdapter(SpinnerHelper.getSpinnerAdapter(context , location));
         spRight.setAdapter(SpinnerHelper.getSpinnerAdapter(context , type));
         spTip.setAdapter(SpinnerHelper.getSpinnerAdapter(context , buildingTip));
+
+        ca1.setText(R.string.minor_1);
+        ca2.setText(R.string.minor_2);
 
     }
 
