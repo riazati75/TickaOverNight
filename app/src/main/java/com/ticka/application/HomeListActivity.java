@@ -40,8 +40,8 @@ public class HomeListActivity extends SetupActivity {
             public void onClick(View v) {
                 startActivity(
                         new Intent(
-                                HomeListActivity.this , MainActivity.class
-                        ).putExtra("state" , 0)
+                                HomeListActivity.this , EditActivity.class
+                        )
                 );
             }
         });
@@ -52,7 +52,7 @@ public class HomeListActivity extends SetupActivity {
                 startActivity(
                         new Intent(
                                 HomeListActivity.this , MainActivity.class
-                        ).putExtra("state" , -1)
+                        )
                 );
             }
         });

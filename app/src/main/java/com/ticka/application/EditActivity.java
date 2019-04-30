@@ -9,6 +9,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +21,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ticka.application.adapters.SideAdapter;
 import com.ticka.application.models.DataModel;
 import com.ticka.application.models.SideList;
 import com.ticka.application.models.SideModel;
@@ -29,47 +34,71 @@ import ir.aid.library.Frameworks.setup.SetupActivity;
 import static com.ticka.application.core.CentralCore.ACTION_UPDATE_ACTIVITY;
 
 @SuppressLint("StaticFieldLeak")
-public class MainActivity extends SetupActivity {
+public class EditActivity extends SetupActivity {
 
-    private static MainActivity activity;
+    private static EditActivity activity;
+    private List<SideModel> sideModels = new ArrayList<>();
     private BroadcastReceiver updater;
     private Fragment lastFragment = null;
     private DataModel dataModel = null;
+    private SideAdapter sideAdapter;
+    private RecyclerView sideMenu;
     private PopupMenu popupMenu;
+    private DrawerLayout drawer_layout;
     private ImageView menu , popup;
     private TextView title;
-    private int pos = 0;
+    private int activityState;
     private boolean isExit = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        initActivity();
+        setContentView(R.layout.activity_edit);
         initViews();
         init();
+    }
+
+    private void initActivity(){
+        Intent intent = getIntent();
+        activityState = intent.getIntExtra("state" , 0);
     }
 
     private void initViews(){
 
         activity = this;
 
+        updateInformation();
         setupNotificationBar();
 
+        drawer_layout = findViewById(R.id.drawer_layout);
         menu          = findViewById(R.id.menu);
         title         = findViewById(R.id.title);
         popup         = findViewById(R.id.popup);
+        sideMenu      = findViewById(R.id.sideMenu);
 
-        menu.setVisibility(View.GONE);
+        if(activityState == -1){
+            menu.setVisibility(View.GONE);
+            drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
 
-        updateInformation();
+        initSideMenu();
     }
 
     private void init(){
 
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sideAdapter.notifyDataSetChanged();
+                drawer_layout.openDrawer(Gravity.END);
+            }
+        });
+
         popup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popupMenu = new PopupMenu(MainActivity.this , view);
+                popupMenu = new PopupMenu(EditActivity.this , view);
                 popupMenu.inflate(R.menu.menu_on);
                 popupMenu.show();
             }
@@ -101,7 +130,38 @@ public class MainActivity extends SetupActivity {
 
     }
 
-    public static MainActivity getActivity() {
+    private void initSideMenu(){
+
+        sideMenu.setLayoutManager(new LinearLayoutManager(
+                this , LinearLayoutManager.VERTICAL , false
+        ));
+        sideMenu.setHasFixedSize(true);
+
+        for(int i = 0; i < SideList.TITLES.length; i++){
+            sideModels.add(new SideModel(
+                    SideList.ICONS[i],
+                    SideList.TITLES[i]
+            ));
+        }
+
+        sideAdapter = new SideAdapter(this, sideModels)
+                .setOnItemClickListener(new SideAdapter.OnItemClickListener() {
+                    @Override
+                    public void onClick(View view, int position) {
+
+                        setFragment(SideList.getFragments().get(position));
+                        title.setText(SideList.getFragmentsTitle().get(position));
+                        sideAdapter.setLastPosition(position);
+
+                        if(drawer_layout.isDrawerOpen(Gravity.END)){
+                            drawer_layout.closeDrawer(Gravity.END);
+                        }
+                    }
+                });
+        sideMenu.setAdapter(sideAdapter);
+    }
+
+    public static EditActivity getActivity() {
         return activity;
     }
 
@@ -118,7 +178,8 @@ public class MainActivity extends SetupActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                pos = pos + 1;
+                int pos = sideAdapter.getLastPosition() + 1;
+                sideAdapter.setLastPosition(pos);
 
                 setFragment(SideList.getFragments().get(pos));
                 title.setText(SideList.getFragmentsTitle().get(pos));
@@ -152,7 +213,10 @@ public class MainActivity extends SetupActivity {
 
     @Override
     public void onBackPressed() {
-        if(isExit) {
+        if(drawer_layout.isDrawerOpen(Gravity.END)){
+            drawer_layout.closeDrawer(Gravity.END);
+        }
+        else if(isExit) {
 
             isExit = false;
 
