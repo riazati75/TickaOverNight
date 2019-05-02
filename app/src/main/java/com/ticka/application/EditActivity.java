@@ -202,6 +202,9 @@ public class EditActivity extends SetupActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS ,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            w.setFlags(WindowManager.LayoutParams.FLAG_SECURE ,
+                    WindowManager.LayoutParams.FLAG_SECURE);
         }
 
     }
@@ -230,6 +233,9 @@ public class EditActivity extends SetupActivity {
             } , 2000);
         }
         else {
+
+            sendBroadcast(new Intent("test"));
+
             finish();
         }
     }
