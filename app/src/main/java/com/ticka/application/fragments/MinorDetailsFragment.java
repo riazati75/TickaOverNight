@@ -1,12 +1,14 @@
 package com.ticka.application.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +18,8 @@ import com.ticka.application.R;
 import com.ticka.application.helpers.SpinnerHelper;
 import com.ticka.application.models.DataModel;
 
+import static com.ticka.application.core.CentralCore.ACTION_UPDATE_ACTIVITY;
+
 public class MinorDetailsFragment extends Fragment {
 
     private Context context;
@@ -24,6 +28,7 @@ public class MinorDetailsFragment extends Fragment {
     private EditText buildingArea , landArea;
     private Spinner spLeft , spRight , spTip;
     private TextView ca1 , ca2;
+    private Button btnNext;
 
     private String[] type = {
             "نوع ساختمان",
@@ -76,6 +81,7 @@ public class MinorDetailsFragment extends Fragment {
         spTip        = view.findViewById(R.id.spTip);
         ca1          = view.findViewById(R.id.ca1);
         ca2          = view.findViewById(R.id.ca2);
+        btnNext      = view.findViewById(R.id.btnNext);
 
         spLeft.setAdapter(SpinnerHelper.getSpinnerAdapter(context , location));
         spRight.setAdapter(SpinnerHelper.getSpinnerAdapter(context , type));
@@ -88,6 +94,14 @@ public class MinorDetailsFragment extends Fragment {
 
     private void init(){
 
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.sendBroadcast(
+                        new Intent(ACTION_UPDATE_ACTIVITY)
+                );
+            }
+        });
     }
 
 }
