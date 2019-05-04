@@ -52,6 +52,40 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="16dp" />
 
+            <LinearLayout
+                android:weightSum="8"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/inputAddPrice"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_edt"
+                    android:minLines="1"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:padding="9dp"
+                    android:hint="عدد به ریال"
+                    android:textColor="@color/colorBlack"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <TextView
+                    android:text="قیمت به ازای هر نفر اضافه:"
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:padding="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray900"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/ca3"
                 android:layout_width="match_parent"
