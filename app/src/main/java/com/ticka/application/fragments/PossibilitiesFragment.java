@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ticka.application.MainActivity;
 import com.ticka.application.R;
 import com.ticka.application.adapters.CheckboxAdapter;
+import com.ticka.application.models.DataModel;
 
 public class PossibilitiesFragment extends Fragment {
 
     private Context context;
+    private DataModel dataModel = MainActivity.getDataModel();
     private RecyclerView recyclerView;
     private CheckboxAdapter adapter;
 

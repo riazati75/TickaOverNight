@@ -11,13 +11,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.ticka.application.MainActivity;
 import com.ticka.application.R;
 import com.ticka.application.helpers.SpinnerHelper;
+import com.ticka.application.models.DataModel;
 
 public class MinorDetailsFragment extends Fragment {
 
     private Context context;
 
+    private DataModel dataModel = MainActivity.getDataModel();
     private EditText buildingArea , landArea;
     private Spinner spLeft , spRight , spTip;
     private TextView ca1 , ca2;

@@ -19,10 +19,6 @@ import android.widget.Toast;
 
 import com.ticka.application.models.DataModel;
 import com.ticka.application.models.SideList;
-import com.ticka.application.models.SideModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import ir.aid.library.Frameworks.setup.SetupActivity;
 
@@ -31,10 +27,9 @@ import static com.ticka.application.core.CentralCore.ACTION_UPDATE_ACTIVITY;
 @SuppressLint("StaticFieldLeak")
 public class MainActivity extends SetupActivity {
 
-    private static MainActivity activity;
+    private static DataModel DATA_MODEL = null;
     private BroadcastReceiver updater;
     private Fragment lastFragment = null;
-    private DataModel dataModel = null;
     private PopupMenu popupMenu;
     private ImageView menu , popup;
     private TextView title;
@@ -50,8 +45,6 @@ public class MainActivity extends SetupActivity {
     }
 
     private void initViews(){
-
-        activity = this;
 
         setupNotificationBar();
 
@@ -101,15 +94,11 @@ public class MainActivity extends SetupActivity {
 
     }
 
-    public static MainActivity getActivity() {
-        return activity;
-    }
-
-    public DataModel getDataModel() {
-        if(dataModel == null){
-             dataModel = new DataModel();
+    public static DataModel getDataModel() {
+        if(DATA_MODEL == null){
+             DATA_MODEL = new DataModel();
         }
-        return dataModel;
+        return DATA_MODEL;
     }
 
     private void updateInformation(){

@@ -11,14 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ticka.application.MainActivity;
 import com.ticka.application.R;
 import com.ticka.application.adapters.CheckboxAdapter;
+import com.ticka.application.models.DataModel;
 
 public class UserRulesFragment extends Fragment {
 
     private Context context;
     private RecyclerView recyclerView;
     private CheckboxAdapter adapter;
+    private DataModel dataModel = MainActivity.getDataModel();
 
     public UserRulesFragment() {
         // Required empty public constructor

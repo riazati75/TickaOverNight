@@ -12,13 +12,16 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import com.ticka.application.MainActivity;
 import com.ticka.application.R;
+import com.ticka.application.models.DataModel;
 
 import static com.ticka.application.core.CentralCore.ACTION_UPDATE_ACTIVITY;
 
 public class RulesFragment extends Fragment {
 
     private Context context;
+    private DataModel dataModel = MainActivity.getDataModel();
 
     public RulesFragment() {
         // Required empty public constructor
