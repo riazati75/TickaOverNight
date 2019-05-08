@@ -85,8 +85,11 @@ public class MainActivity extends SetupActivity {
                 .beginTransaction()
                 .replace(R.id.container, fragment)
                 .setCustomAnimations(
-                        R.animator.card_flip_right_in,
-                        R.animator.card_flip_right_out)
+                        R.anim.animation_enter_from_left,
+                        R.anim.animation_exit_to_right,
+                        R.anim.animation_enter_from_right,
+                        R.anim.animation_exit_to_left
+                )
                 .addToBackStack(null)
                 .commit();
 

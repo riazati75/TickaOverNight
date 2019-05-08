@@ -4,11 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/gray200"
     tools:context=".BaseActivity">
 
     <WebView
         android:id="@+id/web"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="صفحه اول"
+                android:textColor="@color/gray800"
+                android:textSize="40sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:rotationY="-90"
+        android:visibility="gone"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/colorButton"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="صفحه دوم"
+                android:textColor="@color/colorWhite"
+                android:textSize="40sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

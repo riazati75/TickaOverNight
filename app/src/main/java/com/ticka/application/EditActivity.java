@@ -119,10 +119,13 @@ public class EditActivity extends SetupActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container, fragment)
                 .setCustomAnimations(
-                        R.animator.card_flip_right_in,
-                        R.animator.card_flip_right_out)
+                        R.anim.animation_enter_from_left,
+                        R.anim.animation_exit_to_right,
+                        R.anim.animation_enter_from_right,
+                        R.anim.animation_exit_to_left
+                )
+                .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
 
